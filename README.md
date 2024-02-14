@@ -29,7 +29,7 @@
 
 # 📖 Student Dashboard <a name="about-project"></a>
 
-**Student Dashboard** is a web application that allows electrical engineering students to take quizzes on enrolled courses, track their progresses and get access to course materials. Admins can also create and remove quizzes.
+**Sotudent Dashboard** is a web application that allows electrical engineering students to take quizzes on enrolled courses, track their progresses and get access to course materials. Admins can also create and remove quizzes.
 
 ### Server
 
