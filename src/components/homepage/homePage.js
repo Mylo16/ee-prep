@@ -106,7 +106,7 @@ export default function HomePage() {
                 <div key={project.title} className={isDarkMode ? "project-container blue-bg" : "project-container grey-bg"}>
                   <img className="project-img" src={project.img_url} alt="project-pic" />
                   <div className="view-project">
-                    <button type="button" className="see-project">See Project</button>
+                    <a href={project.description} className="see-project">See Project</a>
                     <div className="project-detail">
                       <p className="project-title">{project.title}</p>
                       <div>

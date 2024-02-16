@@ -35,6 +35,7 @@ import addQuiz from '../assets/icons8-add-properties-48.png';
 import addQuestion from '../assets/icons8-questions-64.png';
 import view from '../assets/view.png';
 import noView from '../assets/no-view.png';
+import timer from '../assets/icons8-timer-48.png';
 
 const images = {
   ship,
@@ -44,6 +45,7 @@ const images = {
   addQuiz,
   background,
   email,
+  timer,
   ig,
   facebook,
   twitter,

@@ -10,7 +10,7 @@ import LoadingBar from './homepage/loadingBar';
 
 export default function ResultsPage() {
   window.addEventListener('load', () => {
-    window.location.assign('/home/');
+    window.location.assign('https://ee-prep.vercel.app/');
   });
   const { progresses, error } = useSelector((store) => store.progresses);
   const { resultsData } = useSelector((store) => store.results);

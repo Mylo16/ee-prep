@@ -56,7 +56,7 @@ export default function Projects() {
             <input required type="text" name="title" onChange={handleInputChange} className="input" />
           </div>
           <div className="add-quiz-input">
-            <label>Description</label>
+            <label>Description URL</label>
             <br />
             <input required type="text" name="description" onChange={handleInputChange} className="input" />
           </div>

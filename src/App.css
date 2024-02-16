@@ -879,8 +879,13 @@ li {
 
 .time-bar-wrapper {
   width: 100%;
+  margin-bottom: 2em;
   
   /* overflow: hidden; */
+}
+
+.timer {
+  text-align: center;
 }
 
 .time-bar {

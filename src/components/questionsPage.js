@@ -6,6 +6,7 @@ import { getQuestions } from '../redux/questionSlice';
 import LoadingBar from './homepage/loadingBar';
 import { resultsDetails } from '../redux/resultsSlice';
 import { getProgressById } from '../redux/progressSlice';
+import QuestionTimer from '../utils/questionTimer';
 
 export default function QuestionsPage() {
   const { questions, loading } = useSelector((store) => store.questions);
@@ -190,6 +191,9 @@ export default function QuestionsPage() {
       <CSSTransition onExit={() => handleTimeout()} onEntered={() => setShowAnim(false)} in={showAnim} timeout={ques[quesCount].time} classNames={ques[quesCount].time === 90000 ? 'example1' : 'example'} unmountOnExit>
         <div className="time-bar-wrapper"><div className={isDarkMode ? 'time-bar red-bg' : 'time-bar blue-bg'} /></div>
       </CSSTransition>
+      {showAnim === true &&
+        <QuestionTimer duration={ques[quesCount].time} />
+      }
       <div className={isDarkMode ? 'question-container black-bg' : 'question-container primary-bg'}>
         {ques[quesCount].question_type === "text" ?
         <p>
