@@ -6,9 +6,8 @@ import {
   getUserJwtFromLocalStorage,
   saveUserToLocalStorage,
 } from '../utils/localStorageForUser';
-import { api_base_url } from '../utils/api_url';
 
-const base_url = api_base_url;
+const base_url = "https://mysite-kzc5.onrender.com";
 
 export const userSignup = createAsyncThunk('user/signup', async (userData, { rejectWithValue }) => {
   try {
