@@ -112,6 +112,9 @@ li {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: absolute;
+  overflow: scroll;
+  width: 100%;
 }
 
 .show-password {
@@ -139,7 +142,7 @@ li {
 .login-body h1,
 .signup-body h1,
 .change-password h1 {
-  color: green;
+  color: rgb(38, 32, 121);
 }
 
 .inspire-text {
@@ -193,18 +196,24 @@ li {
 .signup-link {
   display: flex;
   gap: 1em;
+  align-items: center;
+  margin-top: 0.5em;
 }
 
 .to-signup,
 .to-login {
-  font-size: 1.1em;
+  font-size: small;
 }
 
 .sign-up,
 .login {
   font-size: 1.2em;
-  font-weight: bold;
   font-style: italic;
+  color: white;
+}
+
+.forgot-password {
+  color: white;
 }
 
 /***** NAVBAR *****/
@@ -1183,6 +1192,7 @@ li {
     display: flex;
     width: 95%;
     margin: auto;
+    gap: 2em;
     height: 90vh;
     position: absolute;
     justify-content: center;
@@ -1191,6 +1201,8 @@ li {
   .login-body {
     width: 25em;
     height: 65vh;
+    position: relative;
+    overflow: hidden;
   }
 
   .signup-body {
@@ -1198,6 +1210,8 @@ li {
     height: 65vh;
     display: flex;
     flex-direction: column;
+    position: relative;
+    overflow: visible;
   }
 
   .signup-form-break {
@@ -1236,6 +1250,7 @@ li {
 
   .background {
     width: 100%;
+    border-radius: 15px;
     height: 65vh;
   }
 
@@ -1255,6 +1270,7 @@ li {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    border-radius: 15px;
   }
 
   /*** ADD QUIZ ***/
