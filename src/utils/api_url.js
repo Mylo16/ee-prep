@@ -1,1 +1,1 @@
-export const api_base_url = 'https://quiz-app-backend-2tas.onrender.com/api/v1';
+export const api_base_url = 'https://mysite-1gyi.onrender.com/api/v1';
