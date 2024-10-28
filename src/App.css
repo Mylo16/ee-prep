@@ -341,6 +341,7 @@ li {
 .side-links {
   padding-inline-start: 0%;
   margin-left: 1em;
+  font-size: 15px;
 }
 
 .side-link {
@@ -349,6 +350,7 @@ li {
   font-size: 1em;
   gap: 1em;
   margin-bottom: 2em;
+  font-size: 15px;
 }
 
 .side-link a {
