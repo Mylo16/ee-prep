@@ -10,11 +10,11 @@ export default function LinearProgress({ percentage }) {
   const [linearResize, setLinearResize] = useState(false);
 
   useEffect(() => {
-    setProgress(percentage); 
+    setProgress(percentage);
   }, [percentage]);
 
   useEffect(() => {
-    if(window.innerWidth < 400) {
+    if (window.innerWidth < 400) {
       setLinearResize(true);
     }
   }, [window.innerWidth]);
@@ -43,7 +43,7 @@ export default function LinearProgress({ percentage }) {
   }
 
   return (
-    <svg className='svg' width={500} height={40} viewBox={viewBox}>
+    <svg className="svg" width={500} height={40} viewBox={viewBox}>
       <line
         fill="none"
         stroke="#ccc"
@@ -69,11 +69,11 @@ export default function LinearProgress({ percentage }) {
       <text
         fill={isDarkMode ? '#fff' : '#0f0f47'}
         fontSize="1.2em"
-        x={linearResize ? "50%" : "65%"}
-        y={linearResize ? "-45%" : "15%"}
+        x={linearResize ? '50%' : '65%'}
+        y={linearResize ? '-45%' : '15%'}
         dy="15px"
         textAnchor="right"
-        className='linear-text'
+        className="linear-text"
       >
         {`${percentile}%`}
       </text>

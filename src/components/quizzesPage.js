@@ -33,27 +33,26 @@ export default function QuizPage() {
   };
 
   const handleQuizDelete = (courseId, quizId) => {
-    dispatch(deleteQuiz({courseId, quizId}));
+    dispatch(deleteQuiz({ courseId, quizId }));
     window.location.reload();
-  }
+  };
 
   const navigateToQuestions = (courseId, quizId) => {
     navigate('/home/delete_questions', {
       state: {
-        courseId, quizId
+        courseId, quizId,
       },
     });
-  }
+  };
 
-
-  if(user.user_type === 'admin') {
-    return(
+  if (user.user_type === 'admin') {
+    return (
       courses.map((course) => (
         course.quizzes.length > 0 && course.quizzes.map((quiz) => (
           <div key={quiz.id} onClick={() => navigateToQuestions(course.id, quiz.id)} className="delete-quiz">
             <p className="dq-course-name">{course.course_name}</p>
             <p>{quiz.exam_title}</p>
-            <button type="button" className='delete-btn' onClick={() => handleQuizDelete(course.id, quiz.id)}>Delete</button>
+            <button type="button" className="delete-btn" onClick={() => handleQuizDelete(course.id, quiz.id)}>Delete</button>
           </div>
         ))
       ))
@@ -91,7 +90,7 @@ export default function QuizPage() {
         </div>
       )}
       <div className="quiz-text">
-        <h1>Quizzes</h1>
+        <div className="quiz-title">Quizzes</div>
         <p>Take quizzes to get you prepared for your final examination</p>
         <p>❗ You can only take quizzes on enrolled courses</p>
       </div>

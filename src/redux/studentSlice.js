@@ -24,7 +24,7 @@ const studentSlice = createSlice({
     student: [],
   },
   reducers: {
-    clearStudent : (state) => {
+    clearStudent: (state) => {
       state.loading = null;
       state.student = [];
     },

@@ -7,7 +7,6 @@ import { createProgress, updateProgress } from '../redux/progressSlice';
 import { getUserFromLocalStorage } from '../utils/localStorageForUser';
 import LoadingBar from './homepage/loadingBar';
 
-
 export default function ResultsPage() {
   window.addEventListener('load', () => {
     window.location.assign('https://ee-prep.vercel.app/');
@@ -25,7 +24,6 @@ export default function ResultsPage() {
   const initialRender = useRef(true);
 
   useEffect(() => {
-
     let grade = '';
     const score = (resultsData.score / resultsData.resultsQuestion.length) * 100;
     if (score < 40) {
@@ -80,60 +78,63 @@ export default function ResultsPage() {
     }
   }, [progresses]);
 
-  if(error === true) {
-    return(
+  if (error === true) {
+    return (
       <p>Error</p>
     );
   }
-  if(error === null) {
-    return(
+  if (error === null) {
+    return (
       <LoadingBar />
     );
   }
-  if(error === false) {
-  return (
-    <>
-      <img className="shape-ellipse" src={images.ellipse} alt="shape-1" />
-      <img className="shape-rectangle" src={images.rectangle} alt="shape-2" />
-      <img className="shape-ship" src={images.ship} alt="shape-3" />
-      <img className="shape-ellipse1" src={images.ellipse1} alt="shape-4" />
-      <img className="shape-ellipse2" src={images.ellipse2} alt="shape-5" />
-      <div className="results-container">
-        <h1 className="results-head">Results:</h1>
-        <h2>
-          {resultsData.score}
-          /
-          {resultsData.resultsQuestion.length}
-        </h2>
-        <ProgressBar percentage={percentMark} />
-        <h2>Revision</h2>
-        <div className="revision-container">
-          {
+  if (error === false) {
+    return (
+      <>
+        <img className="shape-ellipse" src={images.ellipse} alt="shape-1" />
+        <img className="shape-rectangle" src={images.rectangle} alt="shape-2" />
+        <img className="shape-ship" src={images.ship} alt="shape-3" />
+        <img className="shape-ellipse1" src={images.ellipse1} alt="shape-4" />
+        <img className="shape-ellipse2" src={images.ellipse2} alt="shape-5" />
+        <div className="results-container">
+          <h1 className="results-head">Results:</h1>
+          <h2>
+            {resultsData.score}
+            /
+            {resultsData.resultsQuestion.length}
+          </h2>
+          <ProgressBar percentage={percentMark} />
+          <h2>Revision</h2>
+          <div className="revision-container">
+            {
             resultsData.resultsQuestion.map((question) => (
               <div className="revision-question" key={question.question}>
                 <div className="mark"><img src={question.correct ? images.correct : images.wrong} alt="mark" /></div>
-                {question.questionType === 'image' ?
-                  <div>
-                    <img className='ques-img' src={question.question} alt='question-img'/>
+                {question.questionType === 'image'
+                  ? (
                     <div>
-                      <p>Correct Answer:</p>
-                      <img className='option-img' src={question.answer} alt='anwer-img'/>
+                      <img className="ques-img" src={question.question} alt="question-img" />
+                      <div>
+                        <p>Correct Answer:</p>
+                        <img className="option-img" src={question.answer} alt="anwer-img" />
+                      </div>
                     </div>
-                  </div>
-                  :
-                  <div>
-                    <p>{question.question}</p>
-                    <p className="correct-answer">
-                      Correct Answer:
-                      {question.answer}
-                    </p>
-                  </div>
-                }
+                  )
+                  : (
+                    <div>
+                      <p>{question.question}</p>
+                      <p className="correct-answer">
+                        Correct Answer:
+                        {question.answer}
+                      </p>
+                    </div>
+                  )}
               </div>
             ))
           }
+          </div>
         </div>
-      </div>
-    </>
-  );}
+      </>
+    );
+  }
 }

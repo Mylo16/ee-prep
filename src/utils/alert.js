@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import images from './images';
 import { useDispatch } from 'react-redux';
+import images from './images';
 import { disableAlert } from '../redux/courseSlice';
 import { disableQuestionAlert } from '../redux/questionSlice';
 

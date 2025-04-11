@@ -3,7 +3,9 @@ import axios from 'axios';
 import { getUserJwtFromLocalStorage } from '../utils/localStorageForUser';
 import { api_base_url } from '../utils/api_url';
 
-export const createOption = createAsyncThunk('options/new', async ({ courseId, quizId, questionId, optionData }, { rejectWithValue }) => {
+export const createOption = createAsyncThunk('options/new', async ({
+  courseId, quizId, questionId, optionData,
+}, { rejectWithValue }) => {
   try {
     const response = await axios.post(`${api_base_url}/courses/${courseId}/quizzes/${quizId}/questions/${questionId}/options`, optionData, {
       headers: {
@@ -20,12 +22,12 @@ export const createOption = createAsyncThunk('options/new', async ({ courseId, q
   }
 });
 
-export const getOptions = createAsyncThunk('options', async ({courseId, quizId, questionId }, { rejectWithValue }) => {
+export const getOptions = createAsyncThunk('options', async ({ courseId, quizId, questionId }, { rejectWithValue }) => {
   try {
     const response = await axios.get(`${api_base_url}/courses/${courseId}/quizzes/${quizId}/questions/${questionId}/options`, {
       headers: {
         Authorization: `bearer ${getUserJwtFromLocalStorage()}`,
-      }
+      },
     });
     return response.data;
   } catch (error) {
@@ -33,12 +35,14 @@ export const getOptions = createAsyncThunk('options', async ({courseId, quizId, 
   }
 });
 
-export const getOptionById = createAsyncThunk('options/id', async ({ courseId, quizId, questionId, optionId }, { rejectWithValue }) => {
+export const getOptionById = createAsyncThunk('options/id', async ({
+  courseId, quizId, questionId, optionId,
+}, { rejectWithValue }) => {
   try {
     const response = await axios.get(`${api_base_url}/courses/${courseId}/quizzes/${quizId}/questions/${questionId}/options/${optionId}`, {
       headers: {
         Authorization: `bearer ${getUserJwtFromLocalStorage()}`,
-      }
+      },
     });
     return response.data;
   } catch (error) {
@@ -46,7 +50,9 @@ export const getOptionById = createAsyncThunk('options/id', async ({ courseId, q
   }
 });
 
-export const deleteOption = createAsyncThunk('options/delete', async ({ courseId, quizId, questionId, optionId }, { rejectWithValue }) => {
+export const deleteOption = createAsyncThunk('options/delete', async ({
+  courseId, quizId, questionId, optionId,
+}, { rejectWithValue }) => {
   try {
     const response = await axios.delete(`${api_base_url}/courses/${courseId}/quizzes/${quizId}/questions/${questionId}/options/${optionId}`, {
       headers: {

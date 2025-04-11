@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 // eslint-disable-next-line
 import { PropTypes } from 'prop-types';
+import { Link } from 'react-router-dom';
 import dashboard from '../../assets/dashboard.png';
 import course from '../../assets/course.png';
 import quiz from '../../assets/quiz.png';
@@ -9,7 +10,6 @@ import { userSignout } from '../../redux/userSlice';
 import signout from '../../assets/sign-out.png';
 import images from '../../utils/images';
 import { clearStudent, getUserById } from '../../redux/studentSlice';
-import { Link } from 'react-router-dom';
 
 export default function SideBar({
   menuClicked, phone, onChildClick, showMenu,
@@ -72,34 +72,35 @@ export default function SideBar({
             <img src={signout} alt="logout" className="logo" />
             <Link className="link" to="/">Sign Out</Link>
           </div>
-          {isAdmin &&
+          {isAdmin
+          && (
           <>
-          <li className='side-link'>
-            <img src={images.addQuiz} alt="add-quiz" className='logo' />
-            <Link className='link' to='/home/add_quiz'>Add Quiz</Link>
-          </li>
-          <li className='side-link'>
-            <img src={images.addQuiz} className='logo' alt="add-course" />
-            <Link className='link' to='/home/add_course'>Add Course</Link>
-          </li>
-          <li className='side-link'>
-            <img src={images.addQuiz} className='logo' alt="add-question" />
-            <Link className='link' to='/home/add_question'>Add Question</Link>
-          </li>
-          <li className='side-link'>
-            <img src={images.addQuiz} className='logo' alt="add-material" />
-            <Link className='link' to='/home/add_material'>Add Material</Link>
-          </li>
-          <li className='side-link'>
-            <img src={images.addQuiz} className='logo' alt="add-material" />
-            <Link className='link' to='/home/announcements'>Notices</Link>
-          </li>
-          <li className='side-link'>
-            <img src={images.addQuiz} className='logo' alt="add-material" />
-            <Link className='link' to='/home/projects'>Projects</Link>
-          </li>
+            <li className="side-link">
+              <img src={images.addQuiz} alt="add-quiz" className="logo" />
+              <Link className="link" to="/home/add_quiz">Add Quiz</Link>
+            </li>
+            <li className="side-link">
+              <img src={images.addQuiz} className="logo" alt="add-course" />
+              <Link className="link" to="/home/add_course">Add Course</Link>
+            </li>
+            <li className="side-link">
+              <img src={images.addQuiz} className="logo" alt="add-question" />
+              <Link className="link" to="/home/add_question">Add Question</Link>
+            </li>
+            <li className="side-link">
+              <img src={images.addQuiz} className="logo" alt="add-material" />
+              <Link className="link" to="/home/add_material">Add Material</Link>
+            </li>
+            <li className="side-link">
+              <img src={images.addQuiz} className="logo" alt="add-material" />
+              <Link className="link" to="/home/announcements">Notices</Link>
+            </li>
+            <li className="side-link">
+              <img src={images.addQuiz} className="logo" alt="add-material" />
+              <Link className="link" to="/home/projects">Projects</Link>
+            </li>
           </>
-          }
+          )}
         </ul>
       </div>
 

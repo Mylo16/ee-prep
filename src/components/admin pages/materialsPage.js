@@ -1,8 +1,8 @@
-import { useDispatch, useSelector } from "react-redux";
-import LoadingBar from "../homepage/loadingBar";
-import { useLocation } from "react-router-dom";
-import { deleteMaterial, getMaterials } from "../../redux/materialSlice";
-import { useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import LoadingBar from '../homepage/loadingBar';
+import { deleteMaterial, getMaterials } from '../../redux/materialSlice';
 
 export default function MaterialsPage() {
   const { materials, loading } = useSelector((store) => store.materials);
@@ -15,24 +15,24 @@ export default function MaterialsPage() {
 
   const handleDeleteMaterial = (materialId) => {
     dispatch(deleteMaterial({ materialId, courseId: location.state.courseId }));
-  }
+  };
 
-  if(loading) {
-    return(
+  if (loading) {
+    return (
       <LoadingBar />
     );
   }
-  if(materials.length === 0) {
-    return(
+  if (materials.length === 0) {
+    return (
       <h3>No materials are available for this course</h3>
-    )
+    );
   }
 
-  return(
+  return (
     materials.map((material) => (
       <div className="delete-qtn-container" key={material.id}>
         <p className="question-del">{material.title}</p>
-        <button type="button" className='delete-btn' onClick={() => handleDeleteMaterial(material.id)}>Delete</button>
+        <button type="button" className="delete-btn" onClick={() => handleDeleteMaterial(material.id)}>Delete</button>
       </div>
     ))
   );

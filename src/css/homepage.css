@@ -1,0 +1,286 @@
+/***** HOMEPAGE *****/
+
+/***** SIDEBAR *****/
+
+.sidebar {
+  height: 100vh;
+  width: 50%;
+  position: absolute;
+  top: 0%;
+  bottom: 0%;
+  left: 0%;
+  background-color: var(--primary-color);
+  transition: 0.8s;
+  z-index: 999;
+}
+
+.eleesa-logo {
+  width: 4em;
+  border-radius: 50%;
+  margin: 1em;
+}
+
+.desktop-sidebar-container {
+  display: none;
+}
+
+.no-sidebar {
+  position: absolute;
+  left: -50%;
+  transition: 0.8s;
+}
+
+.side-links {
+  padding-inline-start: 0%;
+  margin-left: 1em;
+  font-size: 15px;
+}
+
+.side-link {
+  display: flex;
+  align-items: center;
+  font-size: 1em;
+  gap: 1em;
+  margin-bottom: 2em;
+  font-size: 15px;
+}
+
+.side-link a {
+  color: rgb(224, 204, 204);
+}
+
+.side-link img {
+  width: 2em;
+}
+
+.menu-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-btn {
+  width: 1.8em;
+  margin-right: 10px;
+}
+
+/*** col-2 ***/
+
+.welcome-msg {
+  font-size: 1.2em;
+}
+
+.trigram {
+  width: 2.5em;
+  display: block;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.no-trigram {
+  display: none;
+}
+
+.progress-text {
+  padding: 0.5em;
+  margin-top: 2em;
+  background-color: var(--grey-1);
+  border-left: solid 0.5em var(--primary-color);
+}
+
+.col-2 {
+  display: block;
+}
+
+.progress-bar {
+  justify-content: center;
+  display: flex;
+  margin-top: 2em;
+}
+
+.desktop-progress {
+  display: none;
+}
+
+.phone-progress {
+  display: block;
+  padding-top: 1em;
+}
+
+.sub-progress {
+  display: flex;
+}
+
+.progress-name {
+  width: 10em;
+  margin-right: 170px;
+}
+
+.linear-progresses {
+  width: 90%;
+  margin: 1em auto;
+  box-shadow: 0px 2px 6px 0 rgba(0, 0, 0, 0.61);
+  border-radius: 10px;
+  padding: 1em;
+}
+
+.svg {
+  overflow: visible;
+}
+
+
+/*** ANNOUNCEMENT ***/
+
+.announcement-container {
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 10px;
+  margin-top: 3em;
+  padding: 0.5em;
+  z-index: 10;
+  position: relative;
+}
+
+.announcement-container p {
+  font-size: 13px;
+  text-align: center;
+}
+
+.general-announcement {
+  background: var(--primary-color);
+  border-radius: 10px 10px 0 0;
+  padding: 0.5em;
+  font-weight: 400;
+  font-size: 1em;
+  text-align: center;
+}
+
+.announcement-title {
+  font-size: 1.2em;
+}
+
+/*** PROJECT ***/
+
+.eleesa-projects {
+  display: block;
+  text-align: center;
+  font-weight: 400;
+  font-size: 1.2em;
+}
+
+.projects {
+  margin-top: 3em;
+}
+
+.projects-container {
+  display: flex;
+  margin-top: 1em;
+  overflow-x: scroll;
+  gap: 0.3em;
+}
+
+.projects-container p {
+  font-size: 13px;
+}
+
+.projects-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.projects-container::-webkit-scrollbar-track {
+  border-radius: 6px;
+}
+
+.projects-container::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: var(--primary-color);
+}
+
+.project-container {
+  width: 23.7em;
+  position: relative;
+  padding: 0.3em;
+}
+
+.project-img {
+  width: 23em;
+  height: 15em;
+  border-radius: 7px;
+}
+
+.see-project {
+  background-color: green;
+  color: white;
+  border-radius: 5px;
+  font-size: 1.1em;
+  padding: 0.3em;
+  border: none;
+}
+
+.view-project {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-title {
+  font-size: 1.1em;
+}
+
+.project-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.project-manage,
+.announcement-manage {
+  display: flex;
+  width: 80%;
+  margin: auto;
+  align-items: flex-start;
+  justify-content: space-between;
+  box-shadow: 0px 2px 6px 0 rgba(0, 0, 0, 0.61);
+  padding: 1em;
+  margin-bottom: 1em;
+}
+
+.project-manage button,
+.announcement-manage button {
+  background-color: red;
+  color: white;
+  padding: 0.2em 0.5em;
+}
+
+@media screen and (min-width: 768px) {
+  .side-bar {
+    left: 20%;
+  }
+
+  .phone-sidebar {
+    display: none;
+  }
+
+  .close-btn {
+    display: none;
+  }
+
+  .desktop-container {
+    display: flex;
+    height: 89vh;
+  }
+
+  .no-sidebar {
+    left: 0;
+  }
+
+  .desktop-sidebar-container {
+    display: block;
+    position: relative;
+    transform: translateY(-5em);
+    height: 97.2vh;
+    width: 250px;
+    background-color: var(--primary-color);
+    z-index: 999;
+  }
+}

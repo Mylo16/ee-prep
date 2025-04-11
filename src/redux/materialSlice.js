@@ -25,7 +25,7 @@ export const getMaterials = createAsyncThunk('materials', async (courseId, { rej
     const response = await axios.get(`${api_base_url}/courses/${courseId}/materials`, {
       headers: {
         Authorization: `bearer ${getUserJwtFromLocalStorage()}`,
-      }
+      },
     });
     return response.data;
   } catch (error) {
@@ -38,7 +38,7 @@ export const getMaterialById = createAsyncThunk('materials/id', async ({ courseI
     const response = await axios.get(`${api_base_url}/courses/${courseId}/materials/${materialId}`, {
       headers: {
         Authorization: `bearer ${getUserJwtFromLocalStorage()}`,
-      }
+      },
     });
     return response.data;
   } catch (error) {
@@ -72,7 +72,7 @@ const materialSlice = createSlice({
   reducers: {
     disableMaterialAlert: (state) => {
       state.error = null;
-    }
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(createMaterial.pending, (state) => {

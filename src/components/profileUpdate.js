@@ -30,12 +30,12 @@ export default function ProfileUpdate() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(isPasswordValid) {
+    if (isPasswordValid) {
       dispatch(updateUser(userData));
     } else {
-      alert("All password requirements must be met ❗❗");
+      alert('All password requirements must be met ❗❗');
     }
-    
+
     if (!loading) {
       navigate('/home');
     }
@@ -47,16 +47,15 @@ export default function ProfileUpdate() {
     setHasDigit(/\d/.test(value));
     setHasSpecialChar(/[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]/.test(value));
     setIsLengthValid(value.length >= 8);
-  
-    const isValid =
-    hasUpperCase && hasLowerCase && hasDigit && hasSpecialChar && isLengthValid;
-  
+
+    const isValid = hasUpperCase && hasLowerCase && hasDigit && hasSpecialChar && isLengthValid;
+
     setIsPasswordValid(isValid);
-  }
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    if(name === "password") {
+    if (name === 'password') {
       setPassword(value);
     }
     setUserData((prevUserData) => ({
@@ -89,27 +88,27 @@ export default function ProfileUpdate() {
         </div>
 
         <ul>
-              <li className='password-check'>
-                <p>Password must include an upper case</p>
-                <img src={hasUpperCase ? images.correct : images.wrong} alt="password-check"/>
-              </li>
-              <li className='password-check'>
-                <p>Password must include a lower case</p>
-                <img src={hasLowerCase ? images.correct : images.wrong} alt="password-check"/>
-              </li>
-              <li className='password-check'>
-                <p>Password must include a digit</p>
-                <img src={hasDigit ? images.correct : images.wrong} alt="password-check"/>
-              </li>
-              <li className='password-check'>
-                <p>Password must include a special character</p>
-                <img src={hasSpecialChar ? images.correct : images.wrong} alt="password-check"/>
-              </li>
-              <li className='password-check'>
-                <p>Password must be at least 8 characters long</p>
-                <img src={isLengthValid ? images.correct : images.wrong} alt="password-check"/>
-              </li>
-            </ul>
+          <li className="password-check">
+            <p>Password must include an upper case</p>
+            <img src={hasUpperCase ? images.correct : images.wrong} alt="password-check" />
+          </li>
+          <li className="password-check">
+            <p>Password must include a lower case</p>
+            <img src={hasLowerCase ? images.correct : images.wrong} alt="password-check" />
+          </li>
+          <li className="password-check">
+            <p>Password must include a digit</p>
+            <img src={hasDigit ? images.correct : images.wrong} alt="password-check" />
+          </li>
+          <li className="password-check">
+            <p>Password must include a special character</p>
+            <img src={hasSpecialChar ? images.correct : images.wrong} alt="password-check" />
+          </li>
+          <li className="password-check">
+            <p>Password must be at least 8 characters long</p>
+            <img src={isLengthValid ? images.correct : images.wrong} alt="password-check" />
+          </li>
+        </ul>
 
         <div className="input">
           <label>Full Name</label>

@@ -3,21 +3,19 @@ import axios from 'axios';
 import { getUserJwtFromLocalStorage } from '../utils/localStorageForUser';
 import { api_base_url } from '../utils/api_url';
 
-export const createCourse = createAsyncThunk('/courses/new', async (coursesData, { rejectWithValue }) =>
-  // Return a Promise that resolves to the data
-  axios.post(`${api_base_url}/courses`, coursesData, {
-    headers: {
-      Authorization: `bearer ${getUserJwtFromLocalStorage()}`,
-    },
-  })
-    .then((response) => response.data)
-    .catch((error) => {
-      const errorMessages = error.response.data.errors.map((err, index) => ({
-        id: index,
-        message: err,
-      }));
-      return rejectWithValue(errorMessages);
+export const createCourse = createAsyncThunk('/courses/new', async (coursesData, { rejectWithValue }) => axios.post(`${api_base_url}/courses`, coursesData, {
+  headers: {
+    Authorization: `bearer ${getUserJwtFromLocalStorage()}`,
+  },
+})
+  .then((response) => response.data)
+  .catch((error) => {
+    const errorMessages = error.response.data.errors.map((err, index) => ({
+      id: index,
+      message: err,
     }));
+    return rejectWithValue(errorMessages);
+  }));
 
 export const getCourses = createAsyncThunk('courses', async (_, { rejectWithValue }) => {
   try {
@@ -68,7 +66,7 @@ const courseSlice = createSlice({
   reducers: {
     disableAlert: (state) => {
       state.isDeleted = false;
-    }
+    },
   },
   extraReducers(builder) {
     builder.addCase(createCourse.pending, (state) => {

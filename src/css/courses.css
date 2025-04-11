@@ -1,0 +1,178 @@
+/***  COURSES PAGE  ***/
+
+.courses-page {
+  padding: 1em;
+  font-size: 13px;
+}
+
+.course-activity {
+  font-size: 1.4em;
+  font-weight: 500;
+}
+.course-scroll {
+  display: flex;
+  align-items: center;
+}
+
+.course-scroll p {
+  font-size: 1.5em;
+  margin-right: 1em;
+}
+
+.next-courses {
+  margin-top: 1em;
+  display: flex;
+}
+
+.next-courses img {
+  margin-right: 1em;
+  background-color: var(--grey-color);
+  padding: 0.1em;
+  border-radius: 5px;
+  width: 2em;
+}
+
+.year-courses {
+  min-width: 100vw;
+}
+
+.courses {
+  border-radius: 7px;
+  padding: 0.5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+  margin: 0 auto 1em auto;
+}
+
+.course-code,
+.course-name {
+  color: white;
+}
+
+.course-code {
+  background-color: rgb(248, 132, 103);
+  color: black;
+  width: 4em;
+  white-space: normal;
+  text-align: center;
+  font-size: 1.2em;
+  border-radius: 30px;
+  height: 4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.1em;
+}
+
+.course-name {
+  font-size: 1.2em;
+  width: 60%;
+  margin: 0 0.3em 0 0.3em;
+  white-space: normal;
+}
+
+.enroll,
+.unenroll,
+.take-quiz {
+  display: flex;
+  align-items: center;
+  width: 20%;
+}
+
+.enroll p,
+.unenroll p,
+.take-quiz p {
+  font-weight: 500;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.courses {
+  background-color: var(--primary-color);
+}
+
+.courses-container {
+  display: flex;
+  align-self: center;
+  flex-direction: row;
+  overflow-x: auto;
+  width: 100vw;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+  margin-left: -1em;
+  padding: 1em 0;
+}
+
+.course-material-header {
+  margin-left: 1em;
+}
+
+.courses-container::-webkit-scrollbar {
+  display: none;
+}
+
+.year {
+  font-size: 1.4em;
+  text-align: center;
+}
+
+.sem {
+  font-size: 1.2em;
+  text-align: center;
+}
+
+/* ENROLLED COURSES */
+
+.enrolled-title {
+  font-size: 1.5em;
+  margin-left: 0.5em;
+  margin-top: 2em;
+}
+
+.quiz-text {
+  margin: 0.5em;
+}
+
+/* ALERT MESSAGE */
+@keyframes alert {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.alert-container {
+  background-color: var(--grey-1);
+  width: 70%;
+  right: 0%;
+  position: fixed;
+  z-index: 999;
+  border-radius: 10px;
+  padding: 1em;
+  animation: alert 1s linear;
+  font-size: 1em;
+}
+
+.no-alert {
+  display: none;
+}
+
+.alert-title-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.close-alert {
+  width: 1.5em;
+}
+
+.alert-title {
+  font-size: 1.2em;
+  color: red;
+  margin-left: 0.7em;
+}

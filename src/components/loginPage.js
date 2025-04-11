@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { userSignin } from '../redux/userSlice';
 import { getUserFromLocalStorage } from '../utils/localStorageForUser';
 import LoadingBar from './homepage/loadingBar';
 import images from '../utils/images';
-import { Link } from 'react-router-dom';
 
 export default function LoginPage() {
   const [userData, setUserData] = useState({});
@@ -26,7 +26,7 @@ export default function LoginPage() {
   };
 
   const togglePasswordVisibility = () => {
-    setShowPassword(prevState => !prevState);
+    setShowPassword((prevState) => !prevState);
   };
 
   const handleInputChange = (e) => {
@@ -54,8 +54,8 @@ export default function LoginPage() {
             <div className="input">
               <label htmlFor="password">Password</label>
               <br />
-              <input type={showPassword ? "text" : "password"} id="password" name="password" onChange={handleInputChange} required className="password-input" />
-              <img className='show-password' src={ showPassword ? images.view : images.noView } alt='show-password' onClick={togglePasswordVisibility}/>
+              <input type={showPassword ? 'text' : 'password'} id="password" name="password" onChange={handleInputChange} required className="password-input" />
+              <img className="show-password" src={showPassword ? images.view : images.noView} alt="show-password" onClick={togglePasswordVisibility} />
             </div>
             <input type="submit" className="submit" value="Login" />
           </form>

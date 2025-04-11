@@ -24,19 +24,17 @@ export default function SignupPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(isPasswordValid && password === confirm) {
+    if (isPasswordValid && password === confirm) {
       dispatch(userSignup(userData));
-    }
-    else if(password !== confirm) {
-      alert("Passwords do not match");
-    }
-    else if (!isPasswordValid) {
-      alert("Invalid password input; all requirements must pass");
+    } else if (password !== confirm) {
+      alert('Passwords do not match');
+    } else if (!isPasswordValid) {
+      alert('Invalid password input; all requirements must pass');
     }
   };
 
   const togglePasswordVisibility = () => {
-    setShowPassword(prevState => !prevState);
+    setShowPassword((prevState) => !prevState);
   };
 
   const validatePassword = (value) => {
@@ -45,19 +43,18 @@ export default function SignupPage() {
     setHasDigit(/\d/.test(value));
     setHasSpecialChar(/[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]/.test(value));
     setIsLengthValid(value.length >= 8);
-  
-    const isValid =
-    hasUpperCase && hasLowerCase && hasDigit && hasSpecialChar && isLengthValid;
-  
+
+    const isValid = hasUpperCase && hasLowerCase && hasDigit && hasSpecialChar && isLengthValid;
+
     setIsPasswordValid(isValid);
-  }
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    if(name === "password") {
+    if (name === 'password') {
       setPassword(value);
     }
-    if(name === "confirm") {
+    if (name === 'confirm') {
       setConfirm(value);
     }
     setUserData({
@@ -77,64 +74,62 @@ export default function SignupPage() {
           { error === true && <p className="invalid-login">Username already exist ❗❗</p>}
           <div className={loading ? 'login-loading' : 'no-loading'}><LoadingBar /></div>
           <form onSubmit={handleSubmit} className="login-form">
-            <div className='signup-form-break'>
-            <div className="input">
-              <label>Username</label>
-              <br />
-              <input name="username" onChange={handleInputChange} type="text" required className="input" />
+            <div className="signup-form-break">
+              <div className="input">
+                <label>Username</label>
+                <br />
+                <input name="username" onChange={handleInputChange} type="text" required className="input" />
+              </div>
+
+              <div className="input">
+                <label>Email</label>
+                <br />
+                <input name="email" onChange={handleInputChange} type="email" required className="input" />
+              </div>
+            </div>
+            <div className="signup-form-break">
+              <div className="input">
+                <label>Full Name</label>
+                <br />
+                <input name="full_name" onChange={handleInputChange} type="text" required className="input" />
+              </div>
+              <div />
+              <div className="input">
+                <label>Password</label>
+                <br />
+                <input name="password" onChange={handleInputChange} value={password} type={showPassword ? 'text' : 'password'} required className="input" />
+                <img className="show-password" src={showPassword ? images.view : images.noView} alt="show-password" onClick={togglePasswordVisibility} />
+              </div>
             </div>
 
             <div className="input">
-              <label>Email</label>
+              <label>Confirm Password</label>
               <br />
-              <input name="email" onChange={handleInputChange} type="email" required className="input" />
-            </div>
-            </div>
-            <div className='signup-form-break'>
-            <div className="input">
-              <label>Full Name</label>
-              <br />
-              <input name="full_name" onChange={handleInputChange} type="text" required className="input" />
-            </div>
-            <div>
-              
-            </div>
-            <div className="input">
-              <label>Password</label>
-              <br />
-              <input name="password" onChange={handleInputChange} value={password} type={showPassword ? 'text' : 'password'} required className="input" />
-              <img className='show-password' src={ showPassword ? images.view : images.noView } alt='show-password' onClick={togglePasswordVisibility}/>
-            </div>
-            </div>
-
-
-            <div className="input">
-              <label>Confirm Password</label><br/>
-              <input name="confirm" type="password" required onChange={handleInputChange}/>
+              <input name="confirm" type="password" required onChange={handleInputChange} />
             </div>
             <ul>
-              <li className='password-check'>
+              <li className="password-check">
                 <p>Password must include an upper case</p>
-                <img src={hasUpperCase ? images.correct : images.wrong} alt="password-check"/>
+                <img src={hasUpperCase ? images.correct : images.wrong} alt="password-check" />
               </li>
-              <li className='password-check'>
+              <li className="password-check">
                 <p>Password must include a lower case</p>
-                <img src={hasLowerCase ? images.correct : images.wrong} alt="password-check"/>
+                <img src={hasLowerCase ? images.correct : images.wrong} alt="password-check" />
               </li>
-              <li className='password-check'>
+              <li className="password-check">
                 <p>Password must include a digit</p>
-                <img src={hasDigit ? images.correct : images.wrong} alt="password-check"/>
+                <img src={hasDigit ? images.correct : images.wrong} alt="password-check" />
               </li>
-              <li className='password-check'>
+              <li className="password-check">
                 <p>Password must include a special character</p>
-                <img src={hasSpecialChar ? images.correct : images.wrong} alt="password-check"/>
+                <img src={hasSpecialChar ? images.correct : images.wrong} alt="password-check" />
               </li>
-              <li className='password-check'>
+              <li className="password-check">
                 <p>Password must be at least 8 characters long</p>
-                <img src={isLengthValid ? images.correct : images.wrong} alt="password-check"/>
+                <img src={isLengthValid ? images.correct : images.wrong} alt="password-check" />
               </li>
             </ul>
-            <div className='signup-btn-container'>
+            <div className="signup-btn-container">
               <input type="submit" className="submit" value="Sign Up" />
             </div>
           </form>

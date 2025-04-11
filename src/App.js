@@ -1,4 +1,6 @@
-import { Link, Outlet, Route, Routes } from 'react-router-dom';
+import {
+  Link, Outlet, Route, Routes,
+} from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
@@ -34,29 +36,10 @@ function App() {
   const dispatch = useDispatch();
   const { user } = useSelector((store) => store.user);
   const [isDarkMode, setIsDarkMode] = useState('');
-  const [isScrollable, setIsScrollable] = useState(false);
 
   useEffect(() => {
     dispatch(loadUserFromLocalStorage());
   }, [dispatch]);
-
-  useEffect(() => {
-    // Check if the page is scrollable
-    const checkScrollable = () => {
-      setIsScrollable(document.body.scrollHeight > window.innerHeight);
-    };
-
-    // Initial check on mount
-    checkScrollable();
-
-    // Event listener for changes in the content size
-    window.addEventListener('resize', checkScrollable);
-
-    // Cleanup the event listener on component unmount
-    return () => {
-      window.removeEventListener('resize', checkScrollable);
-    };
-  }, []);
 
   function Navbar() {
     const [menuClicked, setMenuClicked] = useState(false);
@@ -66,38 +49,35 @@ function App() {
       dispatch(getCourses());
     }, [dispatch]);
 
-    document.addEventListener('click', (e) => {
-      if (e.target.className !== 'trigram' && e.target.className !== 'sidebar'
-        && e.target.className !== 'side-links'
-        && e.target.className !== 'logo' && e.target.className !== 'menu-head'
-        && e.target.className !== 'profile' && e.target.className !== 'side-link') {
-        setMenuClicked(false);
-      }
-      if (e.target.className !== 'profile-details'
-        && e.target.className !== 'profile-container'
-        && e.target.className !== 'profile'
-        && e.target.className !== 'arrow-down') {
-        setProfileClicked(false);
-      }
-    });
+    useEffect(() => {
+      const handleClickOutside = (e) => {
+        if (!['trigram', 'sidebar', 'side-links', 'logo', 'menu-head', 'profile', 'side-link'].includes(e.target.className)) {
+          setMenuClicked(false);
+        }
+        if (!['profile-details', 'profile-container', 'profile', 'arrow-down'].includes(e.target.className)) {
+          setProfileClicked(false);
+        }
+      };
 
-    const handleMenuClicked = () => {
-      setMenuClicked(false);
-    };
+      document.addEventListener('click', handleClickOutside);
+      return () => {
+        document.removeEventListener('click', handleClickOutside);
+      };
+    }, []);
 
-    function ShowMenu() {
+    const toggleMenu = () => {
       dispatch(disableAlert());
       dispatch(disableQuestionAlert());
       dispatch(disableMaterialAlert());
-      setMenuClicked(!menuClicked);
-    }
+      setMenuClicked((prev) => !prev);
+    };
 
-    const handleToggleMode = (dataFromChild) => {
-      setIsDarkMode(dataFromChild);
+    const handleToggleMode = (value) => {
+      setIsDarkMode(value);
     };
 
     const handleProfileClick = () => {
-      setProfileClicked(!profileClicked);
+      setProfileClicked((prev) => !prev);
     };
 
     const handleSignout = () => {
@@ -105,85 +85,101 @@ function App() {
     };
 
     return (
-      <>
-        <main className={isDarkMode ? 'dark-mode' : 'light-mode'}>
-          <div className="nav-container">
+      <main className={isDarkMode ? 'dark-mode' : 'light-mode'}>
+        <div className="nav-container">
+          <div
+            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && toggleMenu()}
+            role="button"
+            tabIndex={0}
+            onClick={toggleMenu}
+          >
+            <img src={images.trigram} alt="menu" className="trigram" />
+          </div>
+
+          <div className="phone-sidebar">
+            <SideBar
+              phone
+              showMenu={toggleMenu}
+              onChildClick={() => setMenuClicked(false)}
+              menuClicked={menuClicked}
+            />
+          </div>
+
+          <div className="nav-links">
+            <DarkModeToggle onChildClick={handleToggleMode} />
             <div
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === 'Space') {
-                  ShowMenu();
-                }
-              }}
+              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && handleProfileClick()}
               role="button"
               tabIndex={0}
-              onClick={() => ShowMenu()}
+              onClick={handleProfileClick}
+              className="profile-container"
             >
-              <img src={images.trigram} alt="menu" className="trigram" />
-            </div>
-            <div className="phone-sidebar"><SideBar phone showMenu={() => ShowMenu} onChildClick={handleMenuClicked} menuClicked={menuClicked} /></div>
-            <div className="nav-links">
-              <DarkModeToggle onChildClick={handleToggleMode} />
-              <div
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === 'Space') {
-                    ShowMenu();
-                  }
-                }}
-                role="button"
-                tabIndex={0}
-                onClick={() => handleProfileClick()}
-                className="profile-container"
-              >
-                <img className="profile" src={images.profile2} alt="profile" />
-                <img className="arrow-down" src={images.expand} alt="arrow-down" />
-              </div>
-              <ul className={profileClicked ? 'profile-details' : 'none'}>
-                <button className='profile-link'><Link to="/home/profile_update">Edit Profile</Link></button>
-                <button className='profile-link'><Link to="/home/settings">Settings</Link></button>
-                <li><button type="button" className='sign-out-btn' onClick={handleSignout}>Sign-out</button></li>
-              </ul>
+              <img className="profile" src={images.profile2} alt="profile" />
+              <img className="arrow-down" src={images.expand} alt="arrow-down" />
             </div>
 
+            <ul className={profileClicked ? 'profile-details' : 'none'}>
+              <button type="button" className="profile-link">
+                <Link to="/home/profile_update">Edit Profile</Link>
+              </button>
+              <button type="button" className="profile-link">
+                <Link to="/home/settings">Settings</Link>
+              </button>
+              <li>
+                <button type="button" className="sign-out-btn" onClick={handleSignout}>
+                  Sign-out
+                </button>
+              </li>
+            </ul>
           </div>
-          <div className="desktop-container">
-            <div className="desktop-sidebar-container"><SideBar onChildClick={() => {}} menuClicked phone={false} showMenu={() => {}} /></div>
-            <div className="outlet"><Outlet /></div>
+        </div>
+
+        <div className="desktop-container">
+          <div className="desktop-sidebar-container">
+            <SideBar
+              onChildClick={() => {}}
+              menuClicked={false}
+              phone={false}
+              showMenu={() => {}}
+            />
           </div>
-        </main>
-      </>
+          <div className="outlet">
+            <Outlet />
+          </div>
+        </div>
+      </main>
     );
   }
 
   return (
-    <>
-      <Routes>
-        <Route element={<ProtectedRoute userAllowed={!user} redirectTo="/home" />}>
-          <Route path="/" element={<LoginPage />} />
-          <Route path="/signup" element={<SignupPage />} />
-          <Route path="/password_reset" element={<PasswordReset />} />
-          <Route path="/change_password/:token" element={<ChangePassword />} />
+    <Routes>
+      <Route element={<ProtectedRoute userAllowed={!user} redirectTo="/home" />}>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/password_reset" element={<PasswordReset />} />
+        <Route path="/change_password/:token" element={<ChangePassword />} />
+      </Route>
+
+      <Route element={<ProtectedRoute userAllowed={!!user} redirectTo="/" />}>
+        <Route path="/home" element={<Navbar />}>
+          <Route index element={<HomePage />} />
+          <Route path="courses" element={<CoursesPage />} />
+          <Route path="quizzes" element={<QuizPage />} />
+          <Route path="questions" element={<QuestionsPage />} />
+          <Route path="quiz/results" element={<ResultsPage />} />
+          <Route path="profile_update" element={<ProfileUpdate />} />
+          <Route path="add_quiz" element={<AddQuiz />} />
+          <Route path="add_course" element={<AddCourse />} />
+          <Route path="add_question" element={<AddQuestion />} />
+          <Route path="delete_questions" element={<DeleteQuestions />} />
+          <Route path="delete_materials" element={<MaterialsPage />} />
+          <Route path="add_material" element={<AddMaterial />} />
+          <Route path="course_materials" element={<CourseMaterials />} />
+          <Route path="announcements" element={<Announcement />} />
+          <Route path="projects" element={<Projects />} />
         </Route>
-        <Route element={<ProtectedRoute userAllowed={!!user} redirectTo="/" />}>
-          <Route path="/home" element={<Navbar />}>
-            <Route index element={<HomePage />} />
-            <Route path="/home/courses" element={<CoursesPage />} />
-            <Route path="/home/quizzes" element={<QuizPage />} />
-            <Route path="/home/questions" element={<QuestionsPage />} />
-            <Route path="/home/quiz/results" element={<ResultsPage />} />
-            <Route path="/home/profile_update" element={<ProfileUpdate />} />
-            <Route path="/home/add_quiz" element={<AddQuiz />} />
-            <Route path="/home/add_course" element={<AddCourse />} />
-            <Route path="/home/add_question" element={<AddQuestion />} />
-            <Route path="/home/delete_questions" element={<DeleteQuestions />} />
-            <Route path="/home/delete_materials" element={<MaterialsPage />} />
-            <Route path="/home/add_material" element={<AddMaterial />} />
-            <Route path="/home/course_materials" element={<CourseMaterials />} />
-            <Route path="/home/announcements" element={<Announcement />} />
-            <Route path="/home/projects" element={<Projects />} />
-          </Route>
-        </Route>
-      </Routes>
-    </>
+      </Route>
+    </Routes>
   );
 }
 

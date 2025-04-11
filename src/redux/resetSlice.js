@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const base_url = 'https://mysite-nprl.onrender.com';
+const base_url = 'https://mysite-d1qu.onrender.com';
 
 export const createReset = createAsyncThunk('/password_reset', async (userEmail, { rejectWithValue }) => {
   try {
@@ -28,12 +28,12 @@ export const updatePassword = createAsyncThunk('user/update_password', async ({ 
     const response = await axios.put(`${base_url}/password_reset`, { token, password }, {
       headers: {
         Accept: 'application/json',
-        "Content-Type": 'application/json',
+        'Content-Type': 'application/json',
       },
       params: {
         token,
-        password
-      }
+        password,
+      },
     });
 
     return response.data;
@@ -42,11 +42,10 @@ export const updatePassword = createAsyncThunk('user/update_password', async ({ 
   }
 });
 
-
 const resetSlice = createSlice({
   name: 'reset',
   initialState: {
-    token: "",
+    token: '',
     loading: false,
     error: null,
   },
@@ -55,7 +54,6 @@ const resetSlice = createSlice({
       state.loading = false;
       state.error = false;
       state.token = action.payload;
-
     })
       .addCase(createReset.pending, (state) => {
         state.error = null;
@@ -76,7 +74,7 @@ const resetSlice = createSlice({
       .addCase(updatePassword.rejected, (state) => {
         state.error = true;
         state.loading = false;
-      })
+      });
   },
 });
 

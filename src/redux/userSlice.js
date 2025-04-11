@@ -7,7 +7,7 @@ import {
   saveUserToLocalStorage,
 } from '../utils/localStorageForUser';
 
-const base_url = "https://quiz-app-backend-1-qzeb.onrender.com";
+const base_url = 'https://mysite-d1qu.onrender.com';
 
 export const userSignup = createAsyncThunk('user/signup', async (userData, { rejectWithValue }) => {
   try {

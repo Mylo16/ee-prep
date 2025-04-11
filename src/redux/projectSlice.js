@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { getUserFromLocalStorage, getUserJwtFromLocalStorage } from '../utils/localStorageForUser';
+import { getUserJwtFromLocalStorage } from '../utils/localStorageForUser';
 import { api_base_url } from '../utils/api_url';
 
 export const createProject = createAsyncThunk('project/new', async (projectData, { rejectWithValue }) => {
@@ -75,7 +75,7 @@ const projectSlice = createSlice({
     disableProjectAlert: (state) => {
       state.deleted = false;
       state.error = null;
-    }
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(createProject.pending, (state) => {
@@ -91,9 +91,8 @@ const projectSlice = createSlice({
       })
       .addCase(createProject.rejected, (state) => {
         state.loading = false;
-        state.error = "Error creating Project";
+        state.error = 'Error creating Project';
         state.deleted = false;
-
       })
       .addCase(getProjects.pending, (state) => {
         state.getProject = 'started';
@@ -115,7 +114,6 @@ const projectSlice = createSlice({
         state.loading = true;
         state.deleted = false;
         state.error = null;
-
       })
       .addCase(deleteProject.fulfilled, (state, action) => {
         state.loading = false;

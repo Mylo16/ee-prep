@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { getUserFromLocalStorage, getUserJwtFromLocalStorage } from '../utils/localStorageForUser';
+import { getUserJwtFromLocalStorage } from '../utils/localStorageForUser';
 import { api_base_url } from '../utils/api_url';
 
 export const createAnnouncement = createAsyncThunk('announcement/new', async (announcementData, { rejectWithValue }) => {
@@ -75,7 +75,7 @@ const announcementSlice = createSlice({
     disableAnnouncementAlert: (state) => {
       state.deleted = false;
       state.error = null;
-    }
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(createAnnouncement.pending, (state) => {
@@ -91,9 +91,8 @@ const announcementSlice = createSlice({
       })
       .addCase(createAnnouncement.rejected, (state) => {
         state.loading = false;
-        state.error = "Error creating Announcement";
+        state.error = 'Error creating Announcement';
         state.deleted = false;
-
       })
       .addCase(getAnnouncements.pending, (state) => {
         state.getAnnouncement = 'started';
@@ -115,7 +114,6 @@ const announcementSlice = createSlice({
         state.loading = true;
         state.deleted = false;
         state.error = null;
-
       })
       .addCase(deleteAnnouncement.fulfilled, (state, action) => {
         state.loading = false;

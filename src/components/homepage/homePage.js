@@ -8,6 +8,7 @@ import Footer from '../footer';
 import { getUserById } from '../../redux/studentSlice';
 import { getProjects } from '../../redux/projectSlice';
 import { getAnnouncements } from '../../redux/announcementSlice';
+import '../../css/homepage.css';
 
 export default function HomePage() {
   const { user } = useSelector((store) => store.user);
@@ -53,75 +54,80 @@ export default function HomePage() {
           <img className="shape-ship" src={images.ship} alt="shape-3" />
           <img className="shape-ellipse1" src={images.ellipse1} alt="shape-4" />
           <img className="shape-ellipse2" src={images.ellipse2} alt="shape-5" />
-          <h1>
-            Hello { user.full_name},
+          <div className="welcome-msg">
+            Hello
+            {' '}
+            { user.full_name}
+            ,
             <br />
             Welcome 👋
-          </h1>
-          {user.user_type !== 'admin' &&
+          </div>
+          {user.user_type !== 'admin'
+          && (
           <>
-          <p className="progress-text black-txt">Let&apos;s improve your progress!</p>
-          <div className="progress-bar">
-            <ProgressBar percentage={percentMark} />
-          </div>
-          <div className={isDarkMode ? "progresses blue-bg" : "progresses white-bg"}>
-            { student.progresses.map((progress) => (
-              <div key={progress.id} className='linear-progresses'>
-                <div className="sub-progress">
-                  <p className="progress-name">
-                    {progress.course_code}
-                    (
-                    {progress.exam_title}
-                    )
-                  </p>
-                  <p className="grade">{progress.grade}</p>
+            <p className="progress-text black-txt">Let&apos;s improve your progress!</p>
+            <div className="progress-bar">
+              <ProgressBar percentage={percentMark} />
+            </div>
+            <div className={isDarkMode ? 'progresses blue-bg' : 'progresses white-bg'}>
+              { student.progresses.map((progress) => (
+                <div key={progress.id} className="linear-progresses">
+                  <div className="sub-progress">
+                    <p className="progress-name">
+                      {progress.course_code}
+                      (
+                      {progress.exam_title}
+                      )
+                    </p>
+                    <p className="grade">{progress.grade}</p>
+                  </div>
+                  <div className="phone-progress"><LinearProgress percentage={progress.total_marks_obtained} /></div>
+                  <div className="desktop-progress"><ProgressBar smaller percentage={parseInt(progress.total_marks_obtained, 10)} /></div>
                 </div>
-                <div className="phone-progress"><LinearProgress percentage={progress.total_marks_obtained} /></div>
-                <div className="desktop-progress"><ProgressBar smaller percentage={parseInt(progress.total_marks_obtained, 10)} /></div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
           </>
-          }
-          
+          )}
+
           <div className="announcement-container">
             <h2 className="general-announcement">General Announcement📢</h2>
-            {announcements.length > 0 ?
-            announcements.map((announcement) => (
-              <div>
-                <p className="announcement-title">❗ {announcement.title} 🔔</p>
-                <p>{announcement.content}</p>
-              </div> 
-            ))
-            :
-            <p>There is no Announcement for the moment. Any new announcement will appear here👌</p>
-            }
-            
+            {announcements.length > 0
+              ? announcements.map((announcement) => (
+                <div>
+                  <p className="announcement-title">
+                    ❗
+                    {announcement.title}
+                    {' '}
+                    🔔
+                  </p>
+                  <p>{announcement.content}</p>
+                </div>
+              ))
+              : <p>There is no Announcement for the moment. Any new announcement will appear here👌</p>}
+
           </div>
           <div className="projects">
             <h2 className={isDarkMode ? 'eleesa-projects white-txt' : 'eleesa-projects black-txt'}>ELEESA PROJECTS📽</h2>
             <div className="projects-container">
-              {projects.length > 0 ?
-              projects.map((project) => (
-                <div key={project.title} className={isDarkMode ? "project-container blue-bg" : "project-container grey-bg"}>
-                  <img className="project-img" src={project.img_url} alt="project-pic" />
-                  <div className="view-project">
-                    <a href={project.description} className="see-project">See Project</a>
-                    <div className="project-detail">
-                      <p className="project-title">{project.title}</p>
-                      <div>
-                        {Array.from({ length: project.project_rating },
-                          (_, index) => index + 1).map((star) => (
-                            <img key={star} src={images.star} alt="rating" />
-                        ))}
+              {projects.length > 0
+                ? projects.map((project) => (
+                  <div key={project.title} className={isDarkMode ? 'project-container blue-bg' : 'project-container grey-bg'}>
+                    <img className="project-img" src={project.img_url} alt="project-pic" />
+                    <div className="view-project">
+                      <a href={project.description} className="see-project">See Project</a>
+                      <div className="project-detail">
+                        <p className="project-title">{project.title}</p>
+                        <div>
+                          {Array.from({ length: project.project_rating },
+                            (_, index) => index + 1).map((star) => (
+                              <img key={star} src={images.star} alt="rating" />
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))
-              :
-              <p>There are no Projects added yet ❗❗</p>
-            }
+                ))
+                : <p>There are no Projects added yet ❗❗</p>}
             </div>
 
           </div>

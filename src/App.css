@@ -107,6 +107,7 @@ li {
   background: rgb(143,175,222);
   background: linear-gradient(108deg, rgba(143,175,222,1) 40%, rgba(27,111,205,1) 54%);
   height: 100vh;
+  padding-top: 5em;
   margin-inline-start: 0%;
   margin-block-start: 0%;
   display: flex;
@@ -128,7 +129,7 @@ li {
 }
 
 .password-check p {
-  font-size: 0.9em;
+  font-size: 0.8em;
 }
 
 .password-check img {
@@ -146,15 +147,24 @@ li {
 }
 
 .inspire-text {
-  font-size: 1.2em;
+  font-size: 1em;
 }
 
 .login-form {
   margin-top: 2em;
 }
 
+.input {
+  position: relative;
+}
+
+.show-password {
+  position: absolute;
+  top: 40%;
+}
+
 .input label {
-  font-size: 1em;
+  font-size: 0.9em;
   color: #0a0a0aad;
 }
 
@@ -163,7 +173,7 @@ li {
 .large-input,
 .select {
   width: 20em;
-  height: 2.5em;
+  height: 2em;
   font-size: 1em;
   margin-bottom: 1em;
   border-radius: 5px;
@@ -179,8 +189,8 @@ li {
 .submit {
   background-color: var(--primary-color);
   color: white;
-  font-size: 1.2em;
-  width: 16.5em;
+  font-size: 1em;
+  width: 100%;
   margin-top: 1em;
   border: none;
   height: 2.5em;
@@ -207,7 +217,7 @@ li {
 
 .sign-up,
 .login {
-  font-size: 1.2em;
+  font-size: 1em;
   font-style: italic;
   color: white;
 }
@@ -226,8 +236,8 @@ li {
 
 .light,
 .dark {
-  width: 2.3em;
-  height: 2.3em;
+  width: 1.7em;
+  height: 1.7em;
   padding: 0.3em;
   background-color: var(--grey-color);
   border-radius: 50%;
@@ -266,7 +276,7 @@ li {
 }
 
 .profile {
-  width: 2.5em;
+  width: 2em;
 }
 
 .profile-details {
@@ -306,242 +316,6 @@ li {
   display: none;
 }
 
-/***** HOMEPAGE *****/
-
-/***** SIDEBAR *****/
-
-.sidebar {
-  height: 100vh;
-  width: 50%;
-  position: absolute;
-  top: 0%;
-  bottom: 0%;
-  left: 0%;
-  background-color: var(--primary-color);
-  transition: 0.8s;
-  z-index: 999;
-}
-
-.eleesa-logo {
-  width: 4em;
-  border-radius: 50%;
-  margin: 1em;
-}
-
-.desktop-sidebar-container {
-  display: none;
-}
-
-.no-sidebar {
-  position: absolute;
-  left: -50%;
-  transition: 0.8s;
-}
-
-.side-links {
-  padding-inline-start: 0%;
-  margin-left: 1em;
-  font-size: 15px;
-}
-
-.side-link {
-  display: flex;
-  align-items: center;
-  font-size: 1em;
-  gap: 1em;
-  margin-bottom: 2em;
-  font-size: 15px;
-}
-
-.side-link a {
-  color: rgb(224, 204, 204);
-}
-
-.side-link img {
-  width: 2em;
-}
-
-.menu-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.close-btn {
-  width: 2.2em;
-}
-
-/*** col-2 ***/
-
-.trigram {
-  width: 3em;
-  display: block;
-  background-color: white;
-  border-radius: 10px;
-}
-
-.no-trigram {
-  display: none;
-}
-
-.progress-text {
-  padding: 0.5em;
-  margin-top: 2em;
-  background-color: var(--grey-1);
-  border-left: solid 0.5em var(--primary-color);
-}
-
-.col-2 {
-  display: block;
-}
-
-.progress-bar {
-  justify-content: center;
-  display: flex;
-  margin-top: 2em;
-}
-
-.desktop-progress {
-  display: none;
-}
-
-.phone-progress {
-  display: block;
-  padding-top: 1em;
-}
-
-.sub-progress {
-  display: flex;
-}
-
-.progress-name {
-  width: 10em;
-  margin-right: 170px;
-}
-
-.linear-progresses {
-  width: 90%;
-  margin: 1em auto;
-  box-shadow: 0px 2px 6px 0 rgba(0, 0, 0, 0.61);
-  border-radius: 10px;
-  padding: 1em;
-}
-
-.svg {
-  overflow: visible;
-}
-
-
-/*** ANNOUNCEMENT ***/
-
-.announcement-container {
-  background-color: var(--primary-color);
-  color: white;
-  border-radius: 10px;
-  margin-top: 3em;
-  padding: 0.5em;
-  z-index: 10;
-  position: relative;
-}
-
-.general-announcement {
-  background: var(--primary-color);
-  border-radius: 10px 10px 0 0;
-  padding: 0.5em;
-  font-weight: 400;
-  text-align: center;
-}
-
-.announcement-title {
-  font-size: 1.2em;
-}
-
-/*** PROJECT ***/
-
-.eleesa-projects {
-  display: block;
-  text-align: center;
-}
-
-.projects {
-  margin-top: 3em;
-}
-
-.projects-container {
-  display: flex;
-  margin-top: 1em;
-  overflow-x: scroll;
-  gap: 0.3em;
-}
-
-.projects-container::-webkit-scrollbar {
-  height: 8px;
-}
-
-.projects-container::-webkit-scrollbar-track {
-  border-radius: 6px;
-}
-
-.projects-container::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background-color: var(--primary-color);
-}
-
-.project-container {
-  width: 23.7em;
-  position: relative;
-  padding: 0.3em;
-}
-
-.project-img {
-  width: 23em;
-  height: 15em;
-  border-radius: 7px;
-}
-
-.see-project {
-  background-color: green;
-  color: white;
-  border-radius: 5px;
-  font-size: 1.1em;
-  padding: 0.3em;
-  border: none;
-}
-
-.view-project {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.project-title {
-  font-size: 1.1em;
-}
-
-.project-detail {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-
-.project-manage,
-.announcement-manage {
-  display: flex;
-  width: 80%;
-  margin: auto;
-  align-items: flex-start;
-  justify-content: space-between;
-  box-shadow: 0px 2px 6px 0 rgba(0, 0, 0, 0.61);
-  padding: 1em;
-  margin-bottom: 1em;
-}
-
-.project-manage button,
-.announcement-manage button {
-  background-color: red;
-  color: white;
-  padding: 0.2em 0.5em;
-}
 
 /*** LOADING BAR ***/
 .loadingbar-container {
@@ -599,180 +373,13 @@ li {
   animation: loadingAnim 1s linear 0.5s infinite;
 }
 
-/***  COURSES PAGE  ***/
-
-.courses-page {
-  padding: 1em;
-}
-
-.course-scroll {
-  display: flex;
-  align-items: center;
-}
-
-.course-scroll p {
-  font-size: 1.5em;
-  margin-right: 1em;
-}
-
-.next-courses {
-  margin-top: 1em;
-  display: flex;
-}
-
-.next-courses img {
-  margin-right: 1em;
-  background-color: var(--grey-color);
-  padding: 0.1em;
-  border-radius: 5px;
-  width: 2em;
-}
-
-.year-courses {
-  min-width: 100vw;
-}
-
-.courses {
-  border-radius: 7px;
-  padding: 0.5em;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 95%;
-  margin: 0 auto 1em auto;
-}
-
-.course-code,
-.course-name {
-  color: white;
-}
-
-.course-code {
-  background-color: rgb(248, 132, 103);
-  color: black;
-  width: 4em;
-  white-space: normal;
-  text-align: center;
-  font-size: 1.2em;
-  border-radius: 30px;
-  height: 4em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.1em;
-}
-
-.course-name {
-  font-size: 1.2em;
-  width: 60%;
-  margin: 0 0.3em 0 0.3em;
-  white-space: normal;
-}
-
-.enroll,
-.unenroll,
-.take-quiz {
-  display: flex;
-  align-items: center;
-  width: 20%;
-}
-
-.enroll p,
-.unenroll p,
-.take-quiz p {
-  font-weight: 500;
-  font-size: 1em;
-  cursor: pointer;
-}
-
-.courses {
-  background-color: var(--primary-color);
-}
-
-.courses-container {
-  display: flex;
-  align-self: center;
-  flex-direction: row;
-  overflow-x: auto;
-  width: 100vw;
-  white-space: nowrap;
-  scroll-behavior: smooth;
-  margin-left: -1em;
-  padding: 1em 0;
-}
-
-.course-material-header {
-  margin-left: 1em;
-}
-
-.courses-container::-webkit-scrollbar {
-  display: none;
-}
-
-.year {
-  font-size: 1.4em;
-  text-align: center;
-}
-
-.sem {
-  font-size: 1.2em;
-  text-align: center;
-}
-
-/* ENROLLED COURSES */
-
-.enrolled-title {
-  font-size: 1.5em;
-  margin-left: 0.5em;
-  margin-top: 2em;
-}
-
-.quiz-text {
-  margin: 0.5em;
-}
-
-/* ALERT MESSAGE */
-@keyframes alert {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-.alert-container {
-  background-color: var(--grey-1);
-  width: 70%;
-  right: 0%;
-  position: fixed;
-  z-index: 999;
-  border-radius: 10px;
-  padding: 1em;
-  animation: alert 1s linear;
-}
-
-.no-alert {
-  display: none;
-}
-
-.alert-title-wrap {
-  display: flex;
-  justify-content: space-between;
-}
-
-.close-alert {
-  width: 1.5em;
-}
-
-.alert-title {
-  font-size: 1.2em;
-  color: red;
-  margin-left: 0.7em;
-}
 
 /*** QUIZZES ***/
+
+.quiz-title {
+  font-size: 1.4em;
+  font-weight: 500
+}
 
 .course-wrap {
   border-radius: 7px;
@@ -979,7 +586,7 @@ li {
 }
 
 .about-us {
-  font-size: 1.4em;
+  font-size: 1.2em;
   margin-bottom: 1em;
   text-align: center;
 }
@@ -993,6 +600,10 @@ li {
   margin-right: 1em;
 }
 
+.web-link img {
+  width: 30px;
+}
+
 .ig,
 .email {
   display: flex;
@@ -1000,11 +611,19 @@ li {
   align-items: center;
 }
 
+.other-links img {
+  width: 30px;
+}
+
+.other-links p {
+  font-size: 12px;
+}
+
 .copy-rights {
   text-align: center;
   background-color: rgba(11, 19, 36);
   padding: 0.5em;
-  font-size: 1.2em;
+  font-size: 0.9em;
   color: white;
 }
 
@@ -1195,7 +814,6 @@ li {
     width: 95%;
     margin: auto;
     gap: 2em;
-    height: 90vh;
     position: absolute;
     justify-content: center;
   }
@@ -1208,7 +826,8 @@ li {
   }
 
   .signup-body {
-    width: 50em;
+    width: 25em;
+    padding-top: 0;
     height: 65vh;
     display: flex;
     flex-direction: column;
@@ -1217,8 +836,8 @@ li {
   }
 
   .signup-form-break {
-    display: flex;
-    justify-content: space-between;
+    /* display: flex;
+    justify-content: space-between; */
     width: 100%;
   }
 
@@ -1227,11 +846,12 @@ li {
   }
   
   .signup-body .input {
-    width: 90%;
+    position: relative;
   }
 
   .submit {
     margin-bottom: 0;
+    width: 90%;
   }
 
   .signup-btn-container {
@@ -1248,10 +868,12 @@ li {
 
   .right-col-content {
     position: relative;
+    overflow: hidden;
+    border-radius: 20px;
   }
 
   .background {
-    width: 100%;
+    width: 140%;
     border-radius: 15px;
     height: 65vh;
   }
@@ -1264,7 +886,7 @@ li {
   .background-cover {
     position: absolute;
     top: 0;
-    bottom: 1.4%;
+    bottom: 1.2%;
     right: 0;
     left: 0;
     background-color: #151d3d88;
@@ -1272,7 +894,7 @@ li {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-radius: 15px;
+    border-radius: 5px;
   }
 
   /*** ADD QUIZ ***/
