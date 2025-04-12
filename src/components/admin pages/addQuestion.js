@@ -76,7 +76,7 @@ export default function AddQuestion() {
   }
   console.log(error);
   console.log(optionCreated)
-  if (error === "false" && optionCreated) {
+  if (error === false && !optionCreated) {
     return (
       <>
         {optionLoading && <div className="add-quiz-loadingbar"><LoadingBar /></div>}
