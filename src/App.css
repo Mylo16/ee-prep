@@ -1017,4 +1017,9 @@ li {
   .quiz-text {
     padding: 0 10em
   }
+
+  .linear-progresses,
+  .sub-progress {
+    flex-direction: row;
+  }
 }
